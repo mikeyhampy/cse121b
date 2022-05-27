@@ -39,7 +39,7 @@ function output() {
 
 // Step 3: Create another function called getTemples. Make it an async function.
 async function getJokes() {
-    const response = await fetch(api_git_url);
+    const response = await fetch(api_git_url, {mode:'cors'});
     const jokesJSON = await response.json();
     console.log(jokesJSON)
     output();
