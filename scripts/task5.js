@@ -3,9 +3,24 @@
 //document.getElementById("message2").innerHTML = day;
 
 /* FETCH */
+// const express = require("express");
 
-var rand_num = 0;
-const api_git_url = "https://github.com/ABSphreak/readme-jokes/blob/master/src/jokes.json";
+// const app = express();
+// const port = process.env.SERVER_PORT || 8000;
+
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*");
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     next();
+//   });
+
+//const api_git_url = "https://github.com/ABSphreak/readme-jokes/blob/master/src/jokes.json";
+const my_jokes = "sources/gitjokes.json"
+let jokesJSON = {};
+
 document.getElementById("outputDiv").innerHTML = "start";
 
 function QAjokes(joke) {
@@ -13,7 +28,7 @@ function QAjokes(joke) {
     var article = document.createElement("article");
 
     var question = document.createElement("h3");
-    question.textContent = joke.q;
+    question.innerHTML = joke["q"];
 
     var answer = document.createElement("h3");
     answer.textContent = joke.a;
@@ -21,27 +36,44 @@ function QAjokes(joke) {
     article.appendChild(question);
     article.appendChild(answer);
     
-    document.getElementById("outputDiv").innerHTML = "article";
+    document.getElementById("outputDiv").innerHTML = joke["q"];
 }
 
 function output() {
     //get random number and access JSON number key
-    // rand_num = Math.floor(Math.random() * 193)
-    // var obj = JSON.parse(jokesJSON.rand_num);
+    var rand_num = Math.floor(Math.random() * 193)
+    //var rand_num_string = rand_num.toString();
+    var obj = {};
+    var letter  = "q";
+    obj = jokesJSON[0 + rand_num]
 
-    // if(obj.hasOwnProperty("q")) {
-    //     QAjokes(jokesJSON)
-    // } else {
-    //     document.getElementById("outputDiv").innerHTML = "article2";
-    // }
-    document.getElementById("outputDiv").innerHTML = "function";
+    if(obj.hasOwnProperty('q')) {
+
+    // if(obj.hasOwnProperty()) {
+        QAjokes(obj)
+    } else {
+        document.getElementById("outputDiv").innerHTML = "article2";
+    }
+    // document.getElementById("outputDiv").innerHTML = "function";
 }
 
 // Step 3: Create another function called getTemples. Make it an async function.
 async function getJokes() {
-    const response = await fetch(api_git_url, {mode:'cors'});
-    const jokesJSON = await response.json();
-    console.log(jokesJSON)
+    //var response = await fetch("https://github.com/ABSphreak/readme-jokes/blob/master/src/jokes.json", {
+    //     method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    //     mode: 'no-cors',
+    //     credentials: 'include', // no-cors, *cors, same-origin;
+    //     body: JSON.stringify(response) // body data type must match "Content-Type" header
+    // });
+
+    //var jokesJSON = await response.text()
+    //var jokesJSON = await response.json();
+
+    // const newJSON = require(my_jokes);
+    const response = await fetch(my_jokes);
+    jokesJSON = await response.json();
+    // jokesJSON = newJSON
+    console.log(jokesJSON);
     output();
 }
 
