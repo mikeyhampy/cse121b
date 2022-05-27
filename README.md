@@ -5,7 +5,7 @@ This program reads jokes from a local JSON file. The jokes will either be displa
 
 The purpose of this program to demonstrate how to use a JSON file with JavaScript.
 
-[Software Demo Video](https://youtu.be/iC1rhxl6fP0)
+[Software Demo Video](https://youtu.be/38SfRItJ-qo)
 
 # Live Server
 
@@ -18,6 +18,7 @@ Tools and languages used.
 * HTML
 * JSON
 * [Live Server Extention](https://github.com/ritwickdey/vscode-live-server-plus-plus)
+* [Source of JSON Joke File](https://github.com/ABSphreak/readme-jokes/blob/master/src/jokes.json)
 
 # Useful Websites
 
