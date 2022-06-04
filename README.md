@@ -1,7 +1,9 @@
 
 # Overview
 [Click Here to Reach Project](JokesCSE.html)
+
 [project site Link](https://mikeyhampy.github.io/cse121b/)
+
 This program reads jokes from a local JSON file. The jokes will either be displayed is Q&A format or it will tell a joke with no punchline. One joke is displayed at a time and they're all random.
 
 The purpose of this program to demonstrate how to use a JSON file with JavaScript.
